@@ -21,13 +21,19 @@ const viewRouter = require('./routes/viewRoutes');
 
 // Start express app
 const app = express();
+
 app.enable('trust proxy');
 
-app.use(cors());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
+// Implement CORS
+app.use(cors());
+
+app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
+
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
