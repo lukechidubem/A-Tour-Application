@@ -43,6 +43,12 @@ body {
   flex-direction: column;
 }
 
+@media only screen and (max-width: 45em) {
+  body {
+    padding: 0;
+  }
+}
+
 .main {
   background-color: #f7f7f7;
   padding: 8rem 6rem;
@@ -50,6 +56,16 @@ body {
   -ms-flex: 1;
   flex: 1;
   position: relative;
+}
+
+@media only screen and (max-width: 45em) {
+  body {
+    padding: 0;
+  }
+
+  .main {
+    padding: 3rem 1rem;
+  }
 }
 
 .flex {
@@ -909,6 +925,17 @@ body {
   }
 }
 
+@media only screen and (max-width: 30em) {
+  .footer__nav li {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+}
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1340,13 +1367,16 @@ body {
   /* Pseudo element (a visible thing that isn't really in the DOM).
       Also needs -ms- */
 }
+
 .form__input:focus {
   outline: none;
   border-bottom: 3px solid #55c57a;
 }
+
 .form__input:focus:invalid {
   border-bottom: 3px solid #ff7730;
 }
+
 .form__input::-webkit-input-placeholder {
   color: #bbb;
 }
@@ -1410,4 +1440,17 @@ body {
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
+}
+
+@media only screen and (max-width: 45em) {
+  .login-form {
+    /* min-width: 40rem; */
+    width: 100%;
+    padding: 1rem 1rem;
+  }
+
+  .form__input {
+    font-size: 1.2rem;
+    padding: 1rem 1.2rem;
+  }
 }
