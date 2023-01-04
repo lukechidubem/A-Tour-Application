@@ -59,6 +59,11 @@ exports.signup = catchAsync(async (req, res, next) => {
 
 // ===============This is for other applications==============
 exports.contactUs = catchAsync(async (req, res, next) => {
+  // 1) Check if email and name exist
+  if (!req.body.name || !req.body.email) {
+    return next(new AppError('Please provide a valid email and name!', 400));
+  }
+
   const newMessage = await ContactUs.create({
     name: req.body.name,
     email: req.body.email,
