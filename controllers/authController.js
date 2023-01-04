@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/userModel');
+const ContactUs = require('./../models/contactUsModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 // const sendEmail = require('./../utils/email');
@@ -54,6 +55,23 @@ exports.signup = catchAsync(async (req, res, next) => {
   await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, req, res);
+});
+
+// ===============This is for other applications==============
+exports.contactUs = catchAsync(async (req, res, next) => {
+  const newMessage = await ContactUs.create({
+    name: req.body.name,
+    email: req.body.email,
+    subject: req.body.subject,
+    message: req.body.message
+  });
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      newMessage
+    }
+  });
 });
 
 exports.login = catchAsync(async (req, res, next) => {
